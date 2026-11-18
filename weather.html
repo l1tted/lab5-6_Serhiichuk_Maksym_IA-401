@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна 5-6. Завдання 2 — Погода</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #weather {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef4ff;
+            border-radius: 6px;
+            min-height: 60px;
+        }
+        .error {
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Погода</h1>
+
+    <input type="text" id="cityInput" value="London" placeholder="Назва міста">
+    <button id="weatherBtn">Показати погоду</button>
+
+    <div id="weather"></div>
+
+    <p><a href="index.html">← Завдання 1</a></p>
+
+    <script src="weather.js"></script>
+</body>
+</html>

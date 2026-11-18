@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна 5-6. Завдання 1</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        nav a {
+            margin-right: 20px;
+            font-size: 18px;
+        }
+        #content {
+            background: yellow;
+            margin-top: 20px;
+            padding: 15px;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Завантаження даних з файлів</h1>
+
+    <nav>
+        <a href="#" id="langsLink">мови</a>
+        <a href="#" id="studentsLink">студенти</a>
+        <a href="weather.html">погода (завдання 2)</a>
+    </nav>
+
+    <div id="content">Натисніть на посилання, щоб завантажити дані.</div>
+
+    <script>
+        const content = document.getElementById("content");
+
+        // Завантажує JSON-файл і показує його як список у жовтому блоці
+        function loadList(fileName, title) {
+            fetch(fileName)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Не вдалося завантажити " + fileName);
+                    }
+                    return response.json();
+                })
+                .then(items => {
+                    let html = "<h3>" + title + "</h3><ul>";
+                    items.forEach(item => {
+                        html += "<li>" + item + "</li>";
+                    });
+                    html += "</ul>";
+                    content.innerHTML = html;
+                })
+                .catch(error => {
+                    content.textContent = "Помилка: " + error.message;
+                });
+        }
+
+        document.getElementById("langsLink").addEventListener("click", function (e) {
+            e.preventDefault();
+            loadList("1.txt", "Мови програмування");
+        });
+
+        document.getElementById("studentsLink").addEventListener("click", function (e) {
+            e.preventDefault();
+            loadList("2.txt", "Студенти");
+        });
+    </script>
+</body>
+</html>
